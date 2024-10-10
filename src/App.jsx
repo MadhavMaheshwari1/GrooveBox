@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const handleMouseMovement = (e) => {
       // Constrain the x position within the viewport
-      const constrainedX = Math.min(e.clientX, window.innerWidth - 30);
+      const constrainedX = Math.min(e.clientX, window.innerWidth - 20);
 
       // Calculate the total y position considering the scroll position
       const totalY = e.clientY + window.scrollY;

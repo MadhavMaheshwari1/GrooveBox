@@ -1,3 +1,4 @@
+import { LocalHospitalTwoTone } from "@mui/icons-material";
 import { useEffect, useState, createContext } from "react";
 
 // Create the context
@@ -7,6 +8,7 @@ const ThemeContext = createContext();
 const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         // Check the user's system preference
+        localStorage.clear();
         const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         return prefersDarkMode ? 'dark' : 'light';
     });

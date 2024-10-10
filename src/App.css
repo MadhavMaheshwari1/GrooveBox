@@ -32,6 +32,33 @@ body {
 
 /* For WebKit-based browsers like Chrome, Safari, and Edge */
 ::-webkit-scrollbar {
-  /* Width of the scrollbar */
-  width: none;
+  width: 0; /* Hides the scrollbar in WebKit browsers */
+  height: 0; /* Hides the horizontal scrollbar if needed */
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  min-width: 200px; /* Adjust based on your design */
+  margin: 0 10px;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: for rounded corners */
+}
+
+.song-info {
+  text-align: center;
 }

@@ -1,62 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Slider = () => {
+const Slider = ({ userCountry = 'IN' }) => { // Default market set to 'US'
     const [songs, setSongs] = useState([]);
-    const visibleItems = 5; // Number of items to display at once
-    const clientId = '4b2bb1cd8b8f40bea956d7e12a81a493'; // Replace with your Spotify client ID
-    const clientSecret = '746612a7fd064715926a8c2e26336013'; // Replace with your Spotify client secret
+    const clientId = '4b2bb1cd8b8f40bea956d7e12a81a493';
+    const clientSecret = '746612a7fd064715926a8c2e26336013';
 
-    // Function to get the access token using Client Credentials flow
     const getAccessToken = async () => {
-        // Encode clientId and clientSecret to Base64
         const auth = btoa(`${clientId}:${clientSecret}`);
 
         try {
-            const response = await axios.post('https://accounts.spotify.com/api/token', null, {
+            const response = await axios.post('https://accounts.spotify.com/api/token', 'grant_type=client_credentials', {
                 headers: {
                     'Authorization': `Basic ${auth}`,
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                params: {
-                    grant_type: 'client_credentials',
-                },
             });
-            console.log("Access Token: ", response.data.access_token);
             return response.data.access_token;
         } catch (error) {
             console.error('Error fetching access token:', error);
         }
     };
 
-    // Function to fetch top tracks from Spotify
     const fetchTopTracks = async () => {
         const accessToken = await getAccessToken();
+        if (!accessToken) {
+            console.error('No access token available.');
+            return;
+        }
 
         try {
-            const response = await axios.get('https://api.spotify.com/v1/me/top/tracks', {
+            const response = await axios.get('https://api.spotify.com/v1/browse/categories/toplists/playlists', {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                 },
                 params: {
-                    limit: 10, // Number of top tracks to fetch
+                    market: userCountry,
                 },
             });
-            setSongs(response.data.tracks);
+            const playlistId = response.data.playlists.items[0].id; // Get the first playlist ID for the country
+
+            const playlistResponse = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            const topTracks = playlistResponse.data.tracks.items.slice(0, 5).map(item => item.track);
+            setSongs(topTracks);
         } catch (error) {
             console.error('Error fetching top tracks:', error);
         }
     };
 
-    // Fetch top tracks on component mount
     useEffect(() => {
         fetchTopTracks();
-    }, []);
+    }, [userCountry]);
 
     return (
         <div className="slider-container">
-            <div className="slider">
-                {songs.slice(0, visibleItems).map((song) => (
+            {/* <div className="slider">
+                {songs.map((song) => (
                     <div className="carousel-item" key={song.id}>
                         <img src={song.album.images[0].url} alt={song.name} />
                         <div className="song-info">
@@ -65,7 +69,7 @@ const Slider = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };

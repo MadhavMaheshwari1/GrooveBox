@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Navbar from './Components/Home/Navbar';
 import { useEffect, useRef, useContext } from 'react';
 import { ThemeContext } from './Contexts/ThemeContext';
+import HomePage from './Pages/HomePage';
 
 function App() {
   const mousePosition = useRef({ x: 0, y: 0 });
@@ -58,8 +59,9 @@ function App() {
       {/* Main App Content */}
       <BrowserRouter>
         <Navbar />
-        {/* <Routes>
-        </Routes> */}
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+        </Routes>
         {/* <Footer /> */}
       </BrowserRouter>
     </div>

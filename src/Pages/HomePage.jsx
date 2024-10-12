@@ -2,7 +2,7 @@ import Slider from "../Components/Home/Slider";
 
 const HomePage = () => {
   return (
-    <div className="max-w-[1280px] mx-auto">
+    <div className="max-w-[1880px] mx-auto">
       <Slider />
     </div>
   );

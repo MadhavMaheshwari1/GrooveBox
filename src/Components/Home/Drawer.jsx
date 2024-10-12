@@ -14,7 +14,7 @@ const Drawer = ({ isOpen, setIsOpen }) => {
 
     return (
         <div
-            className={`fixed top-[1.5rem] ${isOpen ? 'flex' : 'md:flex hidden'} h-[92vh] transition-all duration-500 rounded-[30px] ${theme === 'dark' ? 'bg-[#181b22]' : 'bg-[rgb(83,83,83)]'} md:w-[20rem] w-[12rem] bg-[#292929] z-50`}
+            className={`fixed top-[1.5rem] ${isOpen ? 'flex' : 'md:flex hidden'} h-[92vh] transition-all duration-500 rounded-[30px] ${theme === 'dark' ? 'bg-[#181b22]' : 'bg-[rgb(83,83,83)]'} md:w-[18rem] w-[12rem] bg-[#292929] z-50`}
         >
             <div
                 className="w-full h-auto"

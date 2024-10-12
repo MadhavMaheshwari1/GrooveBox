@@ -139,7 +139,8 @@ body {
 .carousel-item {
   width: 380px; /* Width of each item */
   height: 380px; /* Height of each item */
-  margin: 0 -80px;
+  margin-inline-end:-90px;
+  margin-inline-start:-60px;
   border-radius: 30px; /* Rounded corners */
   position: relative; /* Position for child elements */
   transition: transform 0.5s, filter 0.5s; /* Smooth scaling and fading */
@@ -154,11 +155,11 @@ body {
 
 /* Apply styles based on data attribute */
 .carousel-item[data-pos="-2"] {
-  transform: translateX(-100px) scale(0.7); /* Shift left and scale down */
+  transform: translateX(-100px) scale(0.9); /* Shift left and scale down */
   z-index: 48;
 }
 .carousel-item[data-pos="-1"] {
-  transform: translateX(-50px) scale(0.9); /* Shift left and scale down */
+  transform: translateX(-50px) scale(1); /* Shift left and scale down */
   z-index: 49;
 }
 
@@ -168,11 +169,11 @@ body {
 }
 
 .carousel-item[data-pos="1"] {
-  transform: translateX(50px) scale(0.9); /* Shift left and scale down */
+  transform: translateX(50px) scale(1); /* Shift left and scale down */
   z-index: 49;
 }
 .carousel-item[data-pos="2"] {
-  transform: translateX(100px) scale(0.7); /* Shift left and scale down */
+  transform: translateX(100px) scale(0.9); /* Shift left and scale down */
   z-index: 48;
 }
 .carousel-item[data-pos="3"] {

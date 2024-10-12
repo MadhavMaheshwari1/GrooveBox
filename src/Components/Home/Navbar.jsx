@@ -32,7 +32,7 @@ const Navbar = () => {
         </button>
         <Drawer isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
-      <div className="flex md:justify-between justify-end md:w-[calc(100%-23rem)] w-[100%]  md:ml-[23rem]">
+      <div className="flex md:justify-between justify-end md:w-[calc(100%-22rem)] w-[100%]  md:ml-[21rem]">
         <div className={`relative md:flex hidden items-center w-[80%] ${theme === 'dark' ? 'bg-[rgba(35,39,44,255)]' : 'bg-orange-300'} rounded-full px-4 py-2`}>
           <button>
             <SearchIcon />

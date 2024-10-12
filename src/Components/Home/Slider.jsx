@@ -80,7 +80,7 @@ const Slider = ({ userCountry = 'IN' }) => {
             setStartIndex(index - 2); // Update the start index for positioning
         }
         else if (index >= songs.length - 2) {
-            setStartIndex((prev) => prev = prev + 2);
+            setStartIndex(index - 4);
         }
         rearrangeSongs(index); // Call the function to rearrange the songs based on the index
     };
@@ -98,7 +98,7 @@ const Slider = ({ userCountry = 'IN' }) => {
                     else dataPos = 3;
                     return (
                         <div
-                            className="carousel-item transition-all duration-500"
+                            className="carousel-item transition-all duration-500 border-2 border-white"
                             data-pos={dataPos}
                             key={song.id}
                             onClick={() => handleClick(index)} // Click handler to change the active song

@@ -1,5 +1,5 @@
 import Headphones from "../assets/Headphones.avif"
-import HeadphonesSmall from "../assets/HeadphonesSmall.avif"
+// import HeadphonesSmall from "../assets/HeadphonesSmall.avif"
 
 const Landing = () => {
   return (
@@ -12,14 +12,13 @@ const Landing = () => {
         </button>
       </div>
       <div className="flex items-center justify-center xl:w-1/2 w-full">
-        <div className="flex cursor-pointer">
+        <div className="flex cursor-pointer px-12">
           <picture>
             <source
-              srcSet={`${Headphones} 1200w`}
-              sizes="(max-width: 600px) 40vw, (max-width: 1200px) 18vw"
+              srcSet={Headphones}
               type="image/avif"
             />
-            <img src={Headphones} width="500px" height="500px" alt="Description of the image" />
+            <img src={Headphones} width="600px" height="600px" alt="Description of the image" />
           </picture>
 
         </div>

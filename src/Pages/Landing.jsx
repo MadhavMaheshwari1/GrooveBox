@@ -11,7 +11,7 @@ const Landing = () => {
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevrons-right"><path d="m6 17 5-5-5-5" /><path d="m13 17 5-5-5-5" /></svg></span>
         </button>
       </div>
-      <div className="flex items-center justify-center xl:w-1/2 w-full">
+      <div className="flex items-center justify-center xl:w-1/2 w-full sm:py-0 py-16">
         <div className="flex cursor-pointer px-12">
           <picture>
             <source

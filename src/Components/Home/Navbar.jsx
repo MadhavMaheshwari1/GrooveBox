@@ -65,7 +65,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* <Slider isLoading={loading} /> */}
     </div>
   )
 }

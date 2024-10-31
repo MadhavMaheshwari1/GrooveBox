@@ -4,7 +4,7 @@ import HeadphonesSmall from "../assets/HeadphonesSmall.avif"
 const Landing = () => {
   return (
     <div className="max-w-[1850px] mx-auto flex xl:flex-row flex-col h-[100vh]">
-      <div className="xl:w-1/2 w-full flex flex-col gap-4 justify-center px-8 xl:items-start items-center xl:py-0 py-8 xl:mb-0 mb-4">
+      <div className="xl:w-1/2 w-full flex flex-col gap-4 justify-center px-8 xl:items-start items-center xl:py-0 py-6">
         <p className="xl:text-8xl text-6xl text-white xl:text-start text-center">Enjoy the music, live life to the fullest.</p>
         <p className="xl:text-2xl text-xl text-white px-1 xl:text-start text-center">Listen for your favourite music wherever you are.</p>
         <button className="py-3 px-4 bg-gradient-to-r from-blue-400 font-semibold to-blue-900 rounded-3xl text-white w-[250px] flex justify-between">Login with spotify <span>
@@ -19,7 +19,7 @@ const Landing = () => {
               sizes="(max-width: 600px) 60vw, (max-width: 1200px) 15vw"
               type="image/avif"
             />
-            <img src={HeadphonesSmall} width="600px" height="600px" alt="Description of the image" />
+            <img src={HeadphonesSmall} className="md:w-[600px] w-[500px] md:h-[600px] h-[500px]" alt="Description of the image" />
           </picture>
 
         </div>

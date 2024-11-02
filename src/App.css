@@ -6,8 +6,59 @@
   box-sizing: border-box;
 }
 
-body{
+body {
+  background: rgb(0, 136, 255);
   background: linear-gradient(to bottom, #009bc6, #001a3e);
-  /* linear-gradient(to right,#0069fc,#0093fc);
-  background-blend-mode: multiply; */
+}
+
+.line-height-5 {
+  line-height: 5rem !important;
+}
+
+.animate {
+  transform: rotate(360deg);
+}
+
+/* Loading Through Vinyl Record */
+
+.vinyl_Record {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: linear-gradient(
+        20deg,
+        transparent 40%,
+        rgba(42, 41, 40, 0.85) 40%
+      )
+      no-repeat 100% 0,
+    linear-gradient(60deg, rgba(42, 41, 40, 0.85) 60%, transparent 60%)
+      no-repeat 0 100%,
+    repeating-radial-gradient(#2a2928 0 3px, #ada9a0 4px, #2a2928 5px);
+  background-size: 50% 100%, 100% 50%, 100% 100%;
+
+  animation: spin 1s infinite ease-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl_Record:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -35px;
+  border: solid 1px #d9a388;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
+  background: #da5b33;
+  border:1px solid white;
+  content: "";
 }

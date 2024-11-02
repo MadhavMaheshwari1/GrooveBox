@@ -7,13 +7,13 @@ const Landing = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-900 relative">
+      <div className="flex justify-center items-center h-screen relative">
         <div className="vinyl_Record"></div>
       </div>
     );
@@ -38,7 +38,7 @@ const Landing = () => {
         <div className="flex cursor-pointer px-12">
           <picture>
             <source srcSet={Headphones} type="image/avif" />
-            <img src={Headphones} width="600" height="600" alt="Headphones" loading="lazy" />
+            <img src={Headphones} width="500" height="500" alt="Headphones" loading="lazy" />
           </picture>
         </div>
       </div>

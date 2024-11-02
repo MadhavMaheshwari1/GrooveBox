@@ -35,8 +35,8 @@ body {
       no-repeat 0 100%,
     repeating-radial-gradient(#2a2928 0 3px, #ada9a0 4px, #2a2928 5px);
   background-size: 50% 100%, 100% 50%, 100% 100%;
-
-  animation: spin 1s infinite ease-out;
+  animation: spin 0.5s infinite linear;
+  margin-left: -50px;
 }
 
 @keyframes spin {
@@ -59,6 +59,6 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
   background: #da5b33;
-  border:1px solid white;
+  border: 1px solid white;
   content: "";
 }

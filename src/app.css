@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clippedImg {
+  clip-path: circle(50% at 70% 50%);
+  z-index: 10;
+}

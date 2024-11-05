@@ -7,6 +7,34 @@ import { Link } from "react-router-dom"
 
 const Landing = () => {
 
+  const onClickSpotify = async () => {
+    const generateRandomString = (length) => {
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const values = crypto.getRandomValues(new Uint8Array(length));
+      return values.reduce((acc, x) => acc + possible[x % possible.length], "");
+    }
+
+    const codeVerifier = generateRandomString(64);
+
+    const sha256 = async (plain) => {
+      const encoder = new TextEncoder()
+      const data = encoder.encode(plain)
+      return window.crypto.subtle.digest('SHA-256', data)
+    }
+
+    const base64encode = (input) => {
+      return btoa(String.fromCharCode(...new Uint8Array(input)))
+        .replace(/=/g, '')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_');
+    }
+
+    const hashed = await sha256(codeVerifier)
+    const codeChallenge = base64encode(hashed);
+    console.log(codeChallenge);
+    
+  }
+
   return (
     <div className="max-w-[1920px] mx-auto h-[100vh] relative">
       <div className="w-full h-full relative bg-slate-900">
@@ -27,7 +55,7 @@ const Landing = () => {
           <div className="flex flex-col gap-8 md:items-start items-center md:text-start text-center w-full mb-12">
             <p className="xl:text-6xl sm:text-4xl text-2xl">Join the best music streaming service</p>
             <p className="xl:text-[8rem] sm:text-6xl text-4xl font-bold">Unleash your sonic story</p>
-            <Link to="/" className="flex gap-4 px-4 md:py-3 py-2 xl:w-[230px] sm:w-[190px] w-[140px]  xl:text-3xl sm:text-xl text-[12px] items-center ml-2 border-2 border-white rounded-3xl hover:rounded-[5rem] hover:border-green-500 transition-all">Login with <img src={SpotifyLogo} alt="Spotify Logo" className="sm:w-[40px] w-[30px] sm:h-[40px] h-[30px]" /></Link>
+            <Link to="/" onClick={onClickSpotify} className="flex gap-4 px-4 md:py-3 py-2 xl:w-[230px] sm:w-[190px] w-[140px]  xl:text-3xl sm:text-xl text-[12px] items-center ml-2 border-2 border-white rounded-3xl hover:rounded-[5rem] hover:border-green-500 transition-all">Login with <img src={SpotifyLogo} alt="Spotify Logo" className="sm:w-[40px] w-[30px] sm:h-[40px] h-[30px]" /></Link>
           </div>
         </div>
 

@@ -10,7 +10,15 @@ const Landing = () => {
   return (
     <div className="max-w-[1920px] mx-auto h-[100vh] relative">
       <div className="w-full h-full relative bg-slate-900">
-        <img src={BackgroundImage} alt="Background Image" className="absolute right-0 w-full h-[100vh] object-cover clippedImg" />
+        <img
+          src={BackgroundImage}
+          alt="Background Image"
+          loading="lazy"
+          className="absolute right-0 w-full h-[100vh] object-cover clippedImg"
+          srcSet={`${BackgroundImage} 1920w, ${BackgroundImage} 1280w, ${BackgroundImage} 640w`}
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 100vw"
+        />
+
         <div className="flex absolute z-50 w-full py-10 flex-col h-full justify-between text-gray-300 gap-16 items-start px-10">
           <div className="flex gap-4 items-center xl:text-4xl md:text-2xl justify-between w-full">
             <Link to="/"><img src={RythmixLogo} alt="Logo" width="70px" height="70px" /></Link>

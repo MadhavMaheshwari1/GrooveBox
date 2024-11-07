@@ -46,7 +46,7 @@ const Home = () => {
   const getToken = async (code) => {
 
     let codeVerifier = localStorage.getItem('code_verifier');
-    const redirectUri = 'http://localhost:5173/home';
+    const redirectUri = 'https://groovebox-omega.vercel.app/home';
     const url = 'https://accounts.spotify.com/api/token';
 
     const payload = {

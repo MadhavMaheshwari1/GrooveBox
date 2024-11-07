@@ -38,7 +38,7 @@ const Landing = () => {
 
     const clientId = import.meta.env.VITE_CLIENT_ID;
     console.log(clientId);
-    const redirectUri = 'http://localhost:5173/home';
+    const redirectUri = 'https://groovebox-omega.vercel.app/home';
 
     const scope = 'user-read-private user-read-email';
     const authUrl = new URL("https://accounts.spotify.com/authorize")

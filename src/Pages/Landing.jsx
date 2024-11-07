@@ -3,9 +3,12 @@ import BackgroundImage from "../assets/BackgroundImage.avif"
 import RythmixLogo from "../assets/RythmixLogo.svg"
 import { FaSpotify } from "react-icons/fa6";
 import SpotifyLogo from "../assets/SpotifyLogo.avif"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
+
+  const navigate = useNavigate();
 
   const onClickSpotify = async () => {
     const generateRandomString = (length) => {
@@ -31,13 +34,44 @@ const Landing = () => {
 
     const hashed = await sha256(codeVerifier)
     const codeChallenge = base64encode(hashed);
-    console.log(codeChallenge);
-    
+    // console.log(codeChallenge);
+
+    const clientId = import.meta.env.VITE_CLIENT_ID;
+    console.log(clientId);
+    const redirectUri = 'http://localhost:5173/home';
+
+    const scope = 'user-read-private user-read-email';
+    const authUrl = new URL("https://accounts.spotify.com/authorize")
+
+    // generated in the previous step
+    window.localStorage.setItem('code_verifier', codeVerifier);
+
+    const params = {
+      response_type: 'code',
+      client_id: clientId,
+      scope,
+      code_challenge_method: 'S256',
+      code_challenge: codeChallenge,
+      redirect_uri: redirectUri,
+    }
+
+    authUrl.search = new URLSearchParams(params).toString();
+    window.location.href = authUrl.toString();
   }
+
+
+  // Check if the refresh token exists in localStorage
+  useEffect(() => {
+    const refreshToken = localStorage.getItem("refresh_token");
+    if (refreshToken) {
+      // If the refresh token exists, redirect to /home
+      navigate("/home");
+    }
+  }, [navigate]);
 
   return (
     <div className="max-w-[1920px] mx-auto h-[100vh] relative">
-      <div className="w-full h-full relative bg-slate-900">
+      <div className="w-full h-full relative">
         <img
           src={BackgroundImage}
           alt="Background Image"

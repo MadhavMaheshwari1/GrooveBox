@@ -1,17 +1,10 @@
-import Drawer from "./Drawer"
 import { useState, useContext, useEffect } from "react";
 import { FaBars } from "react-icons/fa6";
-import { ThemeContext } from '../../Contexts/ThemeContext';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import SearchIcon from '@mui/icons-material/Search';
-import CancelIcon from '@mui/icons-material/Cancel';
-import Slider from "./Slider";
+import RythmixLogo from "../../assets/RythmixLogo.svg";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useContext(ThemeContext);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -22,48 +15,17 @@ const Navbar = () => {
   }
 
   return (
-    <div className="max-w-[1880px] mx-auto md:block flex gap-8 px-6">
-      <div className="md:w-1/2 w-[30%]">
-        <button
-          className={`py-4 md:text-2xl md:hidden text-xl ${theme === 'dark' ? 'text-white' : 'text-black'}  ml-8 transition-all duration-500 flex`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <FaBars />
-        </button>
-        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} />
-      </div>
-      <div className="flex md:justify-between justify-end md:w-[calc(100%-22rem)] w-[100%]  md:ml-[21rem]">
-        <div className={`relative md:flex hidden items-center w-[80%] ${theme === 'dark' ? 'bg-[rgba(35,39,44,255)]' : 'bg-orange-300'} rounded-full px-4 py-2`}>
+    <div className="max-w-[1880px] mx-auto py-4 flex items-center gap-12">
+      <div className="h-[95vh] flex flex-col items-center">
+        <img src={RythmixLogo} alt="Logo" width="55px" height="55px" className="cursor-pointer" />
+        <div className="h-[calc(95vh-60px)] mt-4 w-[120px] bg-[rgb(19,18,19)] rounded-xl flex flex-col items-center py-6">
           <button>
-            <SearchIcon />
+            <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-music"><path d="M21 15V6" /><path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /><path d="M12 12H3" /><path d="M16 6H3" /><path d="M12 18H3" /></svg>
           </button>
-          <input
-            type="search"
-            name="search"
-            placeholder="Search for a song"
-            id="search"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="bg-transparent placeholder-[#98989c] placeholder:text-lg py-2 px-2 w-full focus:outline-none"
-          />
-          {searchTerm && (
-            <button onClick={clearSearch} className="absolute right-4 text-white">
-              <CancelIcon />
-            </button>
-          )}
         </div>
-        <div className="flex gap-8 items-center">
-          <button className="md:hidden block"><SearchIcon /></button>
-          <div className={`relative w-[50px] h-[50px] rounded-full ${theme === 'dark' ? 'bg-[#292929]' : 'bg-[rgb(132,132,132)]'} cursor-pointer`}>
-            <button><FavoriteIcon
-              style={{
-                stroke: theme === 'dark' ? 'white' : 'black',
-                strokeWidth: '2',
-              }}
-              className="absolute text-transparent top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
-            /></button>
-          </div>
-        </div>
+      </div>
+      <div className="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
       </div>
     </div>
   )

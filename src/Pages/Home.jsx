@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Navbar from '../Components/Home/Navbar';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
   const getRefreshToken = async () => {
     const refreshToken = localStorage.getItem('refresh_token');
@@ -53,14 +55,13 @@ const Home = () => {
   };
 
   const getUserData = async () => {
-    console.log(localStorage.getItem('access_token'));
-
     try {
       const response = await axios.get('https://api.spotify.com/v1/me', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
         },
       });
+      setUser(response.data);
       console.log(response.data);
     } catch (error) {
       const accessToken = await getRefreshToken();
@@ -71,7 +72,8 @@ const Home = () => {
               'Authorization': `Bearer ${accessToken}`,
             },
           });
-          console.log(response.data);
+          setUser(response.data);
+          // console.log(response.data);
         } catch (secondError) {
           console.error("Error fetching user data after token refresh:", secondError);
         }
@@ -115,7 +117,7 @@ const Home = () => {
       localStorage.setItem('refresh_token', response.refresh_token);
       console.log(response);
       setLoading(false);
-      navigate('/home');
+      navigate('/home',{ replace: true });
     } catch (error) {
       console.error("Error fetching token:", error);
       setLoading(false); // Stop loading if an error occurs
@@ -151,7 +153,7 @@ const Home = () => {
 
   return (
     <div className="max-w-[1920px] mx-auto h-[100vh] text-gray-300">
-      Home
+      <Navbar/>
     </div>
   );
 };

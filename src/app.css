@@ -5,11 +5,12 @@
 }
 
 body{
-  background-color: #111827;
+  background-color: #010001;
 }
 
 .clippedImg {
   clip-path: circle(60% at 70% 50%);
+  opacity:0.5;
   z-index: 10;
 }
 

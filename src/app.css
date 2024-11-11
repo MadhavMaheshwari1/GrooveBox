@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0A1121;
+}
+
+.clippedImg {
+  clip-path: circle(60% at 70% 50%);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid rgb(0, 238, 255);
+  border-right-color: rgb(255, 255, 255);
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.23);
+  border-radius: 12px;
+  box-shadow: 0 30px 30px rgba(255, 255, 255, 0.135);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+}

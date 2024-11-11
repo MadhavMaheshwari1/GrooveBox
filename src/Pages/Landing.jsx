@@ -66,7 +66,8 @@ const Landing = () => {
     const refreshToken = localStorage.getItem("refresh_token");
     if (refreshToken) {
       // If the refresh token exists, redirect to /home
-      navigate("/home",{replace:true});
+      navigate("/home", { replace: true });
+
     }
   }, [navigate]);
 
@@ -85,6 +86,7 @@ const Landing = () => {
           <div className="flex gap-4 items-center xl:text-4xl md:text-2xl justify-between w-full">
             <Link to="/"><img src={RythmixLogo} alt="Logo" width="60px" height="60px" /></Link>
             <Link to="/" className="-mt-2 sm:text-3xl text-2xl hover:text-white duration-500 transition-all hover:font-semibold">Rythmix</Link>
+
           </div>
           <div className="flex flex-col gap-8 md:items-start items-center md:text-start text-center w-full mb-12">
             <p className="xl:text-6xl sm:text-4xl text-2xl">Join the best music streaming service</p>

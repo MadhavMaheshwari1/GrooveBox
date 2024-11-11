@@ -25,7 +25,7 @@ function App() {
         </Routes>
       </AnimatePresence>
     </div>
-  );
+  )
 }
 
 export default App;

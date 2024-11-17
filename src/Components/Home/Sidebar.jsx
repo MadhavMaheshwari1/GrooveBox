@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa6";
 import { FaHouse } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
 import { Menu } from 'lucide-react';
 
 const Navbar = () => {
@@ -14,15 +15,20 @@ const Navbar = () => {
     setSearchTerm(e.target.value);
   };
 
+  const { loading } = useContext(UserContext);
+
   const clearSearch = () => {
     setSearchTerm('');
   }
 
+  if (loading) {
+    return;
+  }
+
   return (
-    <div className={`flex items-center ${location.pathname === '/' ? 'hidden' : ''}`}>
+    <div className={`fixed z-50 ${location.pathname === '/' ? 'hidden' : ''} cursor-pointer`}>
       <div className="flex flex-col items-center">
-        <div className="mt-4 w-[120px] rounded-xl flex flex-col items-center py-6 text-white gap-6">
-          <button><Menu style={{ width: '2rem', height: '2rem' }} /></button>
+        <div className="mt-4 w-[120px] rounded-xl flex flex-col items-center py-[100px] text-white gap-6">
           <Link to="/home" className={`flex flex-col items-center ${location.pathname.slice(1) === 'home' ? 'bg-[#2B2E35] font-semibold' : ''} py-3 px-5 rounded-xl`}><FaHouse fill={`${location.pathname.slice(1) === 'home' ? 'white' : '#2B2E35'}`} strokeWidth={40} style={{ width: '2rem', height: '2rem' }} />Home</Link>
 
           <Link to="/library" className={`flex flex-col items-center ${location.pathname.slice(1) === 'library' ? 'bg-[#2B2E35] font-semibold' : ''} py-3 px-5 rounded-xl`}>

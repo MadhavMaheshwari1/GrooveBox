@@ -123,7 +123,7 @@ const UserProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        if (user !== null) {
+        if (Object.keys(user).length !== 0) {
             setLoading(false);
         }
     }, [user])

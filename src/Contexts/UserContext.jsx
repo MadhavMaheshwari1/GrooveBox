@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
+    const [market, setMarket] = useState('');
 
     const getRefreshToken = async () => {
         const refreshToken = localStorage.getItem('refresh_token');
@@ -124,6 +125,7 @@ const UserProvider = ({ children }) => {
 
     useEffect(() => {
         if (Object.keys(user).length !== 0) {
+            setMarket(user.country);
             setLoading(false);
         }
     }, [user])
@@ -147,7 +149,7 @@ const UserProvider = ({ children }) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{ user, setUser, loading }}>
+        <UserContext.Provider value={{ user, setUser, loading, market }}>
             {children}
         </UserContext.Provider>
     );

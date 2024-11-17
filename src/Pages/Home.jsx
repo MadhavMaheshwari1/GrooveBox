@@ -1,34 +1,87 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { UserContext } from '../Contexts/UserContext';
+import axios from 'axios';
 
 const Home = () => {
 
+  const genreList = ['Romance', 'Chill', 'Party', 'Sad', 'Work Out', 'Sleep', 'Soul', 'Study', 'Pop', 'Metalcore', 'Kids', 'Acoustic', 'Club', 'Groove'];
+  const [featuredMusic, setFeaturedMusic] = useState([]);
+  const { user, loading, market } = useContext(UserContext);
+
+  const getFeaturedMusic = async () => {
+    try {
+      const accessToken = localStorage.getItem('access_token');
+      const playlistId = market === 'IN' ? '37i9dQZEVXbLZ52XmnySJg' : '37i9dQZEVXbMDoHDwVN2tF';
+      const response = await axios.get(
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      const tracks = response.data.items.map((item) => ({
+        name: item.track.name,
+        artist: item.track.artists.map((artist) => artist.name).join(', '),
+        album: item.track.album.name,
+        albumImageUrl: item.track.album.images[0]?.url, // Get the album's first image
+      }));
+
+      setFeaturedMusic(tracks);
+
+      // const responseTracks = await axios.get(tracksURL, {
+      //   headers: {
+      //     'Authorization': `Bearer ${accessToken}`,
+      //   },
+      // })
+      // console.log(responseTracks);
+      // const albumImageUrl = responseTracks.data.items[0].track.album.images[0].url;
+      // console.log(albumImageUrl);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(featuredMusic);
+
+
+  useEffect(() => {
+    if (Object.keys(user).length !== 0) {
+      getFeaturedMusic();
+    }
+  }, [loading]);
+
   return (
     <motion.div
-      className="max-w-[1880px] mx-auto lg:px-[130px] px-[30px] md:py-[140px] py-[120px]"
+      className="max-w-[1880px] mx-auto lg:ps-[150px] ps-[30px] md:py-[140px] py-[120px] relative h-[100vh]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: .5 }}
     >
-      <div className="">
+      <div className="w-full h-full sm:pe-[30px] pe-[45px] flex flex-col gap-4">
         <div className="flex text-white gap-4 text-2xl overflow-x-hidden relative rounded-xl">
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Romance</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Chill</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Party</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Sad</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[180px] justify-center items-center whitespace-nowrap">Work Out</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Sleep</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Soul</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Study</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Pop</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Metalcore</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Kids</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Acoustic</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Club</button>
-          <button className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap">Groove</button>
-          <div className="absolute w-[40px] h-[40px] right-0 z-50 rounded-full bg-cyan-500 filter blur-lg"></div>
+          {
+            genreList.map((genre, index) => (
+              <button key={index} className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap cursor-pointer">{genre}</button>
+            ))
+          }
+          <div className="absolute w-[40px] h-[40px] right-0 z-50 rounded-full bg-cyan-500 filter blur-xl"></div>
+          <div className="absolute w-[40px] h-[40px] right-4 z-50 rounded-full bg-pink-400 filter blur-xl"></div>
+        </div>
+        <div className="flex overflow-x-hidden gap-8 mt-4">
+          {
+            featuredMusic.map((value, index) => (
+              <>
+                <div className="flex flex-col text-white">
+                  <div key={index}><img src={value.albumImageUrl} alt="Top 50" className='min-w-[300px] h-[300px] rounded-xl cursor-pointer' /></div>
+                  <div className='flex w-full justify-center mt-4 text-xl font-semibold'>{value.name}</div>
+                </div>
+              </>
+            ))
+          }
         </div>
       </div>
     </motion.div>

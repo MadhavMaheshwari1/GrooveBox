@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../Contexts/UserContext";
 import { Menu } from 'lucide-react';
+import RythmixLogo from "../../assets/RythmixLogo.svg";
 
 const Navbar = () => {
 
@@ -26,9 +27,10 @@ const Navbar = () => {
   }
 
   return (
-    <div className={`fixed z-50 ${location.pathname === '/' ? 'hidden' : ''} cursor-pointer lg:top-0 lg:w-auto w-full bottom-0`}>
-      <div className="flex w-full items-center">
-        <div className="mt-4 lg:text-lg text-[md] lg:w-[120px] w-full rounded-xl flex lg:flex-col flex-row items-center lg:justify-start justify-center lg:py-[100px] py-[20px] text-white gap-6">
+    <div className={`${location.pathname === '/' ? 'hidden' : ''} cursor-pointer lg:top-0 lg:w-auto w-full`}>
+      <div className="flex w-full items-start">
+        <div className="mt-4 lg:text-lg text-[md] lg:w-[120px] w-full rounded-xl flex lg:flex-col flex-row items-center lg:justify-start justify-center py-[1rem] text-white gap-6">
+          <Link to="/home"><img src={RythmixLogo} alt="Logo" className="cursor-pointer h-[50px] w-[50px]" /></Link>
           <Link to="/home" className={`flex flex-col items-center gap-1 ${location.pathname.slice(1) === 'home' ? 'bg-[rgba(66,74,87,0.58)] font-semibold' : ''} md:py-3 md:px-5 px-3 py-2 rounded-xl`}><FaHouse fill={`${location.pathname.slice(1) === 'home' ? 'white' : '#2B2E35'}`} strokeWidth={40} className="w-7 h-7" />Home</Link>
           <Link to="/library" className={`flex flex-col items-center ${location.pathname.slice(1) === 'library' ? 'bg-[rgba(66,74,87,0.58)] font-semibold' : ''}  md:py-3 md:px-5 px-3 py-2 rounded-xl `}>
             <svg

@@ -38,8 +38,8 @@ const Landing = () => {
     // console.log(codeChallenge);
 
     const clientId = import.meta.env.VITE_CLIENT_ID;
-    console.log(clientId);
-    const redirectUri = (import.meta.env.VITE_NODE_ENV === 'localhost') ? 'http://localhost:5173/home' : 'https://groovebox-omega.vercel.app/home';
+    // console.log(clientId);
+    const redirectUri = 'https://groovebox-omega.vercel.app/home';
 
     const scope = 'user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public';
     const authUrl = new URL("https://accounts.spotify.com/authorize")

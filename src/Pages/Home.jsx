@@ -56,11 +56,12 @@ const Home = () => {
   return (
     <motion.div
       className="max-w-[1880px] mx-auto lg:ps-[150px] ps-[30px] md:py-[140px] py-[120px] relative h-[100vh]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: .5 }}
+      initial={{ opacity: 0, x: -200, y: 0 }} // Ensure it starts at the same vertical position
+      animate={{ opacity: 1, x: 0, y: 0 }} // Ensure it stays at the same vertical position
+      exit={{ opacity: 0, x: 200, y: 0 }} // Exit while staying at the same vertical position
+      transition={{ duration: 0.5 }} // Smooth transition
     >
+
       <div className="w-full h-full sm:pe-[38px] pe-[40px] flex flex-col gap-8">
         <div className="flex text-white gap-4 text-2xl overflow-x-scroll relative rounded-xl">
           {

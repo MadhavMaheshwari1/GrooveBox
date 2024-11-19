@@ -18,11 +18,14 @@ body {
   background-color: rgb(10, 17, 33);
 }
 
+/* As custom properties are not animatable in css if using older syntax... */
+
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
+
 .borderAnim::before {
   content: "";
   color: white;
@@ -36,13 +39,13 @@ body {
     #ff0095,
     #ff4545
   );
-  width: 240px;
+  width: 100%;
   border-radius: 28px;
-  height: 82px;
+  height: 100%;
   left: 3px;
-  top: -6px;
+  top: 0px;
   filter: blur(10px);
-  animation: borderAnimation 1s infinite;
+  animation: borderAnimation 1.5s infinite;
 }
 
 @keyframes borderAnimation {
@@ -80,19 +83,15 @@ body {
 /* Firefox */
 /* For WebKit-based browsers like Chrome, Safari, and Edge */
 ::-webkit-scrollbar {
-  width: 8px;
-  /* Width of the scrollbar */
+  width: 0px;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
-  /* Makes the track invisible */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #0073ff;
-  /* Blue color for the scrollbar thumb */
-  border-radius: 10px;
+  background-color: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {

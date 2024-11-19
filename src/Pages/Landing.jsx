@@ -92,7 +92,7 @@ const Landing = () => {
             <p className="xl:text-6xl sm:text-4xl text-2xl">Join the best music streaming service</p>
             <p className="xl:text-[8rem] sm:text-6xl text-4xl font-bold">Unleash your sonic story</p>
             <div className="relative">
-              <Link to="/" onClick={onClickSpotify} className="flex gap-4 px-4 md:py-3 py-2 xl:w-[230px] sm:w-[190px] w-[140px]  xl:text-3xl sm:text-xl text-[12px] borderAnim items-center ml-2 border-2 border-white rounded-3xl transition-all">Login with <img src={SpotifyLogo} alt="Spotify Logo" className="sm:w-[40px] w-[30px] sm:h-[40px] h-[30px]" /></Link>
+              <Link to="/" onClick={onClickSpotify} className="flex gap-4 px-4 md:py-3 py-2 xl:w-[230px] sm:w-[190px] w-[140px]  xl:text-3xl sm:text-xl text-[12px] borderAnim items-center ml-2 rounded-3xl transition-all">Login with <img src={SpotifyLogo} alt="Spotify Logo" className="sm:w-[40px] w-[30px] sm:h-[40px] h-[30px]" /></Link>
             </div>
           </div>
         </div>

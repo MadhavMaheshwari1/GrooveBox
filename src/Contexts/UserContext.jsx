@@ -125,6 +125,8 @@ const UserProvider = ({ children }) => {
 
     useEffect(() => {
         if (Object.keys(user).length !== 0) {
+            console.log(user);
+            
             setMarket(user.country);
             setLoading(false);
         }

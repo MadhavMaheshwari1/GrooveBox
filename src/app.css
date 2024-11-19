@@ -5,13 +5,53 @@
 }
 
 body {
-  background: #0A1121;
+  background: #0a1121;
 }
 
 .clippedImg {
   clip-path: circle(60% at 70% 50%);
   opacity: 0.5;
   z-index: 10;
+}
+
+.borderAnim {
+  background-color: rgb(10, 17, 33);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.borderAnim::before {
+  content: "";
+  color: white;
+  position: absolute;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  width: 240px;
+  border-radius: 28px;
+  height: 82px;
+  left: 3px;
+  top: -6px;
+  filter: blur(10px);
+  animation: borderAnimation 1s infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
 }
 
 .loader {
@@ -33,4 +73,35 @@ body {
   border-radius: 12px;
   backdrop-filter: blur(9.1px);
   -webkit-backdrop-filter: blur(9.1px);
+}
+
+/* ScrollBar */
+
+/* Firefox */
+/* For WebKit-based browsers like Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  /* Makes the track invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0073ff;
+  /* Blue color for the scrollbar thumb */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0040ff;
+  /* Darker blue on hover */
+}
+
+/* Hide scrollbar arrows (if any) */
+::-webkit-scrollbar-button {
+  display: none;
+  /* Hides the arrows */
 }

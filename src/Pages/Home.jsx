@@ -61,25 +61,24 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: .5 }}
     >
-      <div className="w-full h-full sm:pe-[30px] pe-[45px] flex flex-col gap-4">
-        <div className="flex text-white gap-4 text-2xl overflow-x-hidden relative rounded-xl">
+      <div className="w-full h-full sm:pe-[38px] pe-[40px] flex flex-col gap-8">
+        <div className="flex text-white gap-4 text-2xl overflow-x-scroll relative rounded-xl">
           {
             genreList.map((genre, index) => (
-              <button key={index} className="py-2 px-3 glass rounded-xl flex w-[130px] justify-center items-center whitespace-nowrap cursor-pointer">{genre}</button>
+              <button key={index} className="py-2 px-3 glass rounded-xl flex w-[140px] justify-center items-center whitespace-nowrap cursor-pointer">{genre}</button>
             ))
           }
-          <div className="absolute w-[40px] h-[40px] right-0 z-50 rounded-full bg-cyan-500 filter blur-xl"></div>
-          <div className="absolute w-[40px] h-[40px] right-4 z-50 rounded-full bg-pink-400 filter blur-xl"></div>
+          <div className="absolute w-[40px] h-[40px] right-0 z-40 rounded-full bg-cyan-500 filter blur-xl"></div>
+          <div className="absolute w-[40px] h-[40px] right-4 z-40 rounded-full bg-pink-400 filter blur-xl"></div>
         </div>
-        <div className="flex overflow-x-hidden gap-8 mt-4">
+        <h1 className='text-white md:text-5xl text-3xl font-bold ml-1'>Welcome, {user.display_name}</h1>
+        <div className="flex overflow-x-hidden gap-8 mt-2 ml-1">
           {
             featuredMusic.map((value, index) => (
-              <>
-                <div className="flex flex-col text-white">
-                  <div key={index}><img src={value.albumImageUrl} alt="Top 50" className='min-w-[300px] h-[300px] rounded-xl cursor-pointer' /></div>
-                  <div className='flex w-full justify-center mt-4 text-xl font-semibold'>{value.name}</div>
-                </div>
-              </>
+              <div className="flex flex-col text-white" key={index}>
+                <div key={index}><img src={value.albumImageUrl} alt="Top 50" className='md:min-w-[300px] min-w-[200px] md:h-[300px] h-[200px] rounded-xl cursor-pointer' /></div>
+                <div className='flex w-full justify-center mt-4 md:text-xl text-md font-semibold'>{value.name}</div>
+              </div>
             ))
           }
         </div>

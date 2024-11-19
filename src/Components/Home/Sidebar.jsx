@@ -7,7 +7,7 @@ import { UserContext } from "../../Contexts/UserContext";
 import { Menu } from 'lucide-react';
 import RythmixLogo from "../../assets/RythmixLogo.svg";
 
-const Navbar = () => {
+const Sidebar = ({setShowMenu}) => {
 
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,7 +27,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className={`${location.pathname === '/' ? 'hidden' : ''} cursor-pointer lg:w-auto w-full absolute lg:top-0 bottom-0`}>
+    <div className={`${location.pathname === '/' ? 'hidden' : ''} cursor-pointer lg:w-auto w-full absolute lg:top-0 bottom-0`} onClick={() => setShowMenu(false)}>
       <div className="absolute w-full h-full z-[-1]">
         <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#00fff7] z-[-1] right-1/3 filter blur-3xl mix-blend-multiply opacity-10 -top-[50px]"></div>
         <div className="absolute h-[200px] w-[500px] rounded-xl bg-[#ff12a0] z-[-1] right-1/2 filter blur-3xl mix-blend-multiply opacity-10 -top-[100px]"></div>
@@ -56,4 +56,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Sidebar

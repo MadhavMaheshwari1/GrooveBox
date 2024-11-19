@@ -13,7 +13,7 @@ function App() {
   const location = useLocation();
   return (
     <AnimatePresence mode="exitBeforeEnter">
-      <div className="fixed flex max-w-[1880px] mx-auto right-0 left-0 lg:top-0 bottom-0">
+      <div className="fixed flex max-w-[1880px] mx-auto right-0 left-0 lg:top-0 bottom-0 h-full lg:justify-start justify-center z-50 cursor-pointer">
         <Sidebar />
         <Navbar />
       </div>

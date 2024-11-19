@@ -27,10 +27,15 @@ const Navbar = () => {
   }
 
   return (
-    <div className={`${location.pathname === '/' ? 'hidden' : ''} cursor-pointer lg:top-0 lg:w-auto w-full`}>
+    <div className={`${location.pathname === '/' ? 'hidden' : ''} cursor-pointer lg:w-auto w-full absolute lg:top-0 bottom-0`}>
+      <div className="absolute w-full h-full z-[-1]">
+        <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#00fff7] z-[-1] right-1/3 filter blur-3xl mix-blend-multiply opacity-10 -top-[50px]"></div>
+        <div className="absolute h-[200px] w-[500px] rounded-xl bg-[#ff12a0] z-[-1] right-1/2 filter blur-3xl mix-blend-multiply opacity-10 -top-[100px]"></div>
+        <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#05d5ff] z-[-1] right-1/4 filter blur-3xl mix-blend-multiply opacity-10 -top-[50px]"></div>
+      </div>
       <div className="flex w-full items-start">
         <div className="mt-4 lg:text-lg text-[md] lg:w-[120px] w-full rounded-xl flex lg:flex-col flex-row items-center lg:justify-start justify-center py-[1rem] text-white gap-6">
-          <Link to="/home"><img src={RythmixLogo} alt="Logo" className="cursor-pointer h-[50px] w-[50px]" /></Link>
+          <Link to="/home"><img src={RythmixLogo} alt="Logo" className="cursor-pointer h-[50px] w-[50px] lg:block hidden" /></Link>
           <Link to="/home" className={`flex flex-col items-center gap-1 ${location.pathname.slice(1) === 'home' ? 'bg-[rgba(66,74,87,0.58)] font-semibold' : ''} md:py-3 md:px-5 px-3 py-2 rounded-xl`}><FaHouse fill={`${location.pathname.slice(1) === 'home' ? 'white' : '#2B2E35'}`} strokeWidth={40} className="w-7 h-7" />Home</Link>
           <Link to="/library" className={`flex flex-col items-center ${location.pathname.slice(1) === 'library' ? 'bg-[rgba(66,74,87,0.58)] font-semibold' : ''}  md:py-3 md:px-5 px-3 py-2 rounded-xl `}>
             <svg

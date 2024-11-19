@@ -8,6 +8,7 @@ import { UserRoundPen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
+import RythmixLogo from "../../assets/RythmixLogo.svg";
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -44,13 +45,15 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full" onClick={() => setShowMenu(false)}>
-        <div className="absolute w-full h-full">
-          <div className="absolute h-[200px] w-[500px] rounded-xl bg-[#ff2c3a] z-[-1] right-1/2 filter blur-3xl mix-blend-multiply opacity-10 -top-[100px]"></div>
-          <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#00fff7] z-[-1] right-1/3 filter blur-3xl mix-blend-multiply opacity-10 -top-[140px]"></div>
-          <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#05d5ff] z-[-1] right-1/4 filter blur-3xl mix-blend-multiply opacity-10 -top-[150px]"></div>
+      {/* <div className="lg:hidden text-white absolute top-0">Hi</div> */}
+      <div className="w-full lg:ps-[122px] ps-0" onClick={() => setShowMenu(false)}>
+        <div className="absolute lg:w-full w-0">
+          <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#00fff7] z-[-1] right-1/3 filter blur-3xl mix-blend-multiply opacity-10 -top-[50px]"></div>
+          <div className="absolute h-[200px] w-[500px] rounded-xl bg-[#ff12a0] z-[-1] right-1/2 filter blur-3xl mix-blend-multiply opacity-10 -top-[100px]"></div>
+          <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#05d5ff] z-[-1] right-1/4 filter blur-3xl mix-blend-multiply opacity-10 -top-[50px]"></div>
         </div>
         <div className={`flex py-8 w-full px-8 justify-between ${location.pathname === '/' ? 'hidden' : ''}`}>
+          <Link to="/home"><img src={RythmixLogo} alt="Logo" className="cursor-pointer h-[50px] w-[50px] lg:hidden block lg:w-0" /></Link>
           <div className="flex w-full justify-between items-center">
             <div className="flex gap-12">
               <div className="lg:flex h-[60px] -mt-1 lg:w-[620px] hidden bg-transparent items-center rounded-xl lg:border-[1px] border-gray-400 gap-4 relative">
@@ -65,9 +68,9 @@ const Navbar = () => {
                 {images && images.length > 0 && (
                   <button onClick={(e) => { setShowMenu(!showMenu); e.stopPropagation() }}><img src={images[1].url} alt="Profile Image" className='rounded-full border-4 border-gray-400 md:w-[60px] md:h-[60px] h-[50px] w-[50px] backdrop-blur-lg' onContextMenu={(e) => e.preventDefault()} /></button>
                 )}
-                {!showMenu && (<div className="opacity-0 group-hover:opacity-100 top-20 transition-all font-semibold duration-600 absolute text-white bg-[rgb(46,52,61)] rounded-md py-2 px-4 z-[1]">Madhav</div>)}
+                {!showMenu && (<div className="opacity-0 group-hover:opacity-100 top-20 transition-all font-semibold duration-600 absolute text-white bg-[rgb(46,52,61)] rounded-md py-2 px-4">Madhav</div>)}
                 {showMenu && (
-                  <div className="absolute z-[100] lg:w-[200px] lg:h-[150px] lg:text-xl text-md w-[160px] h-[120px] bg-[rgb(46,52,61)] flex items-center justify-center md:top-24 top-16 right-0 rounded-xl py-4 text-white text-xl cursor-pointer">
+                  <div className="absolute lg:w-[200px] lg:h-[150px] lg:text-xl text-md w-[160px] h-[120px] bg-[rgb(46,52,61)] flex items-center justify-center md:top-24 top-16 right-0 rounded-xl py-4 text-white text-xl cursor-pointer">
                     <div className="flex flex-col lg:gap-4 gap-2">
                       <Link to={external_urls.spotify} className='flex justify-between lg:w-[180px] w-[130px] mx-auto bg-[rgb(66,74,87)] py-2 px-3 rounded-xl'><UserRoundPen />Profile</Link>
                       <button onClick={() => logoutHandler()} className='flex justify-between lg:w-[180px] w-[130px] mx-auto bg-[rgb(66,74,87)] py-2 px-3 rounded-xl'><LogOut />Logout</button>

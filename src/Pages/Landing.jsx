@@ -37,7 +37,7 @@ const Landing = () => {
     const codeChallenge = base64encode(hashed);
     // console.log(codeChallenge);
 
-    const clientId = import.meta.env.VITE_CLIENT_ID;
+    const clientId = "4b2bb1cd8b8f40bea956d7e12a81a493";
     // console.log(clientId);
     const redirectUri = 'https://groovebox-omega.vercel.app/home';
 

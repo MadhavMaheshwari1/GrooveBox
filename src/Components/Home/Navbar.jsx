@@ -8,7 +8,7 @@ import { UserRoundPen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
-import RythmixLogo from "../../assets/RythmixLogo.svg";
+import Serene from "../../assets/Serene+.png";
 
 const Navbar = ({ showMenu, setShowMenu }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -52,7 +52,7 @@ const Navbar = ({ showMenu, setShowMenu }) => {
           <div className="absolute h-[200px] w-[600px] rounded-xl bg-[#05d5ff] z-[-1] right-1/4 filter blur-3xl mix-blend-multiply opacity-10 -top-[50px]"></div>
         </div>
         <div className={`flex py-8 w-full px-8 justify-between ${location.pathname === '/' ? 'hidden' : ''}`}>
-          <Link to="/home"><img src={RythmixLogo} alt="Logo" className="cursor-pointer h-[50px] w-[50px] lg:hidden block lg:w-0" /></Link>
+          <Link to="/home"><img src={Serene} alt="Logo" className="cursor-pointer h-[50px] w-[50px] lg:hidden block lg:w-0" /></Link>
           <div className="flex w-full justify-between items-center">
             <div className="flex gap-12">
               <div className="lg:flex h-[60px] -mt-1 lg:w-[620px] hidden bg-transparent items-center rounded-xl lg:border-[1px] border-gray-400 gap-4 relative">

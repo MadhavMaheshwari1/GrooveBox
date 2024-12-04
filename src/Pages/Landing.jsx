@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import BackgroundImage from "../assets/BackgroundImage.avif"
-import RythmixLogo from "../assets/RythmixLogo.svg"
+import BackgroundImage from "../assets/BackgroundImage.jpg"
+import Serene from "../assets/Serene+.png"
 import { FaSpotify } from "react-icons/fa6";
 import SpotifyLogo from "../assets/SpotifyLogo.avif"
 import { Link } from "react-router-dom";
@@ -82,17 +82,15 @@ const Landing = () => {
           srcSet={`${BackgroundImage} 1920w, ${BackgroundImage} 1280w, ${BackgroundImage} 640w`}
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 100vw"
         />
-        <div className="flex absolute z-50 w-full py-10 flex-col h-full justify-between text-white gap-16 items-start px-10">
+        <div className="flex absolute z-50 w-full py-10 flex-col h-full justify-between text-white gap-16 items-start sm:px-4 px-2">
           <div className="flex gap-4 items-center xl:text-4xl md:text-2xl justify-between w-full">
-            <Link to="/"><img src={RythmixLogo} alt="Logo" width="60px" height="60px" /></Link>
-            <Link to="/" className="-mt-2 sm:text-3xl text-2xl hover:text-white duration-500 transition-all hover:font-semibold">Rythmix</Link>
-
+            <Link to="/"><img src={Serene} alt="Logo" className="xl:w-[150px] xl:h-[150px] md:w-[120px] md:h-[120px] sm:w-[100px] sm:h-[100px] w-[80px] h-[80px]" /></Link>
           </div>
-          <div className="flex flex-col gap-8 md:items-start items-center md:text-start text-center w-full mb-12">
-            <p className="xl:text-6xl sm:text-4xl text-2xl">Join the best music streaming service</p>
-            <p className="xl:text-[8rem] sm:text-6xl text-4xl font-bold">Unleash your sonic story</p>
+          <div className="flex flex-col xl:gap-8 md:gap-6 gap-4 md:items-start items-center md:text-start text-center w-full mb-12">
+            <p className="xl:text-[6rem] md:text-6xl sm:text-4xl text-3xl font-bold xl:-mb-4 -mb-2">Songs You would expect</p>
+            <p className="xl:text-[6rem] md:text-6xl sm:text-4xl text-3xl font-bold">+ Songs You wouldn't</p>
             <div className="relative">
-              <Link to="/" onClick={onClickSpotify} className="flex gap-4 px-4 md:py-3 py-2 xl:w-[230px] sm:w-[190px] w-[140px]  xl:text-3xl sm:text-xl text-[12px] borderAnim items-center ml-2 rounded-3xl transition-all">Login with <img src={SpotifyLogo} alt="Spotify Logo" className="sm:w-[40px] w-[30px] sm:h-[40px] h-[30px]" /></Link>
+              <Link to="/" onClick={onClickSpotify} className="flex gap-4 xl:px-5 lg:px-[18px] md:px-[14px] px-[18px] md:py-3 sm:py-2 py-1 xl:w-[230px] lg:w-[180px] md:w-[170px] sm:w-[170px] w-[160px]  xl:text-3xl md:text-xl sm:text-lg text-lg border-2 items-center ml-2 rounded-3xl hover:rounded-[34px] hover:border-green-500 transition-all">Login with <img src={SpotifyLogo} alt="Spotify Logo" className="sm:w-[30px] w-[20px] sm:h-[30px] h-[20px]" /></Link>
             </div>
           </div>
         </div>

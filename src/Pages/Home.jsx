@@ -14,21 +14,23 @@ const Home = () => {
       const accessToken = localStorage.getItem('access_token');
       const playlistId = market === 'IN' ? '37i9dQZEVXbLZ52XmnySJg' : '37i9dQZEVXbMDoHDwVN2tF';
       const response = await axios.get(
-        `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+        `https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         }
       );
-      const tracks = response.data.items.map((item) => ({
-        name: item.track.name,
-        artist: item.track.artists.map((artist) => artist.name).join(', '),
-        album: item.track.album.name,
-        albumImageUrl: item.track.album.images[0]?.url, // Get the album's first image
-      }));
+      console.log(response.data);
+      
+      // const tracks = response.data.items.map((item) => ({
+      //   name: item.track.name,
+      //   artist: item.track.artists.map((artist) => artist.name).join(', '),
+      //   album: item.track.album.name,
+      //   albumImageUrl: item.track.album.images[0]?.url, // Get the album's first image
+      // }));
 
-      setFeaturedMusic(tracks);
+      // setFeaturedMusic(tracks);
 
       // const responseTracks = await axios.get(tracksURL, {
       //   headers: {
@@ -73,7 +75,7 @@ const Home = () => {
           <div className="absolute w-[40px] h-[40px] right-4 z-40 rounded-full bg-pink-400 filter blur-xl"></div>
         </div>
         <h1 className='text-white md:text-5xl text-3xl font-bold ml-1'>Welcome, {user.display_name}</h1>
-        <div className="flex overflow-x-hidden gap-8 mt-2 ml-1">
+        <div className="flex overflow-x-auto gap-8 mt-2 ml-1">
           {
             featuredMusic.map((value, index) => (
               <div className="flex flex-col text-white" key={index}>

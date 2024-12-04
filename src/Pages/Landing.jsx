@@ -86,7 +86,7 @@ const Landing = () => {
           <div className="flex gap-4 items-center xl:text-4xl md:text-2xl justify-between w-full">
             <Link to="/"><img src={Serene} alt="Logo" className="xl:w-[150px] xl:h-[150px] md:w-[120px] md:h-[120px] sm:w-[100px] sm:h-[100px] w-[80px] h-[80px]" /></Link>
           </div>
-          <div className="flex flex-col xl:gap-8 md:gap-6 gap-4 xl:items-start items-center md:text-start text-center w-full xl:mb-12 mb-32">
+          <div className="flex flex-col xl:gap-8 md:gap-6 gap-4 xl:items-start items-center md:text-start text-center w-full xl:mb-12 lg:mb-32 md:mb-40 mb-64">
             <p className="xl:text-[6rem] md:text-6xl sm:text-4xl text-3xl font-bold xl:-mb-4 -mb-2">Songs You would expect</p>
             <p className="xl:text-[6rem] md:text-6xl sm:text-4xl text-3xl font-bold">+ Songs You wouldn't</p>
             <div className="relative">

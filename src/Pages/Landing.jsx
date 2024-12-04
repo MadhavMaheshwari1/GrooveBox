@@ -10,6 +10,11 @@ import { Troubleshoot } from "@mui/icons-material";
 const Landing = () => {
 
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
 
   const onClickSpotify = async () => {
     const generateRandomString = (length) => {
@@ -60,7 +65,6 @@ const Landing = () => {
     window.location.href = authUrl.toString();
   }
 
-
   // Check if the refresh token exists in localStorage
   useEffect(() => {
     const refreshToken = localStorage.getItem("refresh_token");
@@ -70,6 +74,14 @@ const Landing = () => {
 
     }
   }, [navigate]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[100vh] w-full text-8xl">
+        <p className="text-transparent logo">Serene+</p>
+      </div>
+    )
+  }
 
   return (
     <div className="max-w-[1920px] mx-auto h-[100vh] relative">
@@ -84,7 +96,7 @@ const Landing = () => {
         />
         <div className="flex absolute z-50 w-full py-10 flex-col h-full justify-between text-white gap-16 items-start sm:px-4 px-2">
           <div className="flex gap-4 items-center xl:text-4xl md:text-2xl justify-between w-full">
-            <Link to="/"><img src={Serene} alt="Logo" className="xl:w-[150px] xl:h-[150px] md:w-[120px] md:h-[120px] sm:w-[100px] sm:h-[100px] w-[80px] h-[80px]" /></Link>
+            <Link to="/"><img src={Serene} alt="Logo" className="xl:w-[170px] xl:h-[170px] md:w-[140px] md:h-[140px] sm:w-[120px] sm:h-[120px] w-[100px] h-[100px] -mt-6" /></Link>
           </div>
           <div className="flex flex-col xl:gap-8 md:gap-6 gap-4 xl:items-start items-center md:text-start text-center w-full xl:mb-12 lg:mb-32 md:mb-40 mb-56">
             <p className="xl:text-[6rem] md:text-6xl sm:text-4xl text-3xl font-bold xl:-mb-4 -mb-2">Songs You would expect</p>
